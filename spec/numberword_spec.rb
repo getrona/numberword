@@ -27,5 +27,13 @@ describe('Fixnum#numberword') do
   it('should return "one thousand twenty two" for the number 1022') do
     expect(1022.numberword).to(eq("one thousand twenty two"))
   end
-
+  it('should return "nine hundred thousand ninety nine" for 900099') do
+    expect(900099.numberword).to(eq("nine hundred thousand ninety nine"))
+  end
+  it('should return "one trillion" for 1000000000000') do
+    expect(1000000000000.numberword).to(eq("one trillion"))
+  end
+  it('should return "nine hundred ninety nine trillion nine hundred ninety nine billion nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine" for 999,999,999,999,999') do
+    expect(999999999999999.numberword).to(eq("nine hundred ninety nine trillion nine hundred ninety nine billion nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine"))
+  end
 end

@@ -32,16 +32,18 @@ class Fixnum
       9 => "ninety"
     }
     higher_digits = {
-      4 => "thousand",
-      7 => "million",
-      10 => "billion",
-      13 => "trillion"
+      2 => "thousand",
+      3 => "million",
+      4 => "billion",
+      5 => "trillion"
     }
     # assume 3 digit number. split into threes for higher
     sentence = []
     groups = []
     digits = self.to_s
-    for i in 1..(digits.length/3.0).ceil do
+    group_count = (digits.length/3.0).ceil
+
+    for i in 1..group_count do
       if(digits.length > 3)
         groups.push(digits.slice!(-3, 3).to_i)
       else
@@ -49,7 +51,8 @@ class Fixnum
       end
     end
 
-    groups.reverse.each do |num|
+    groups.reverse!
+    groups.each.with_index do |num, i|
       if num >= 100
         sentence.push(ones.fetch(num/100))
         sentence.push("hundred")
@@ -60,19 +63,16 @@ class Fixnum
         sentence.push(tens.fetch(num/10))
         num = num % 10
       end
+
       if ones.has_key?(num)
       	sentence.push(ones.fetch(num))
       end
+
+      if i < group_count - 1 and groups[i] > 0
+        group_num = group_count - i
+        sentence.push(higher_digits.fetch(group_num))
+      end
     end
-    
-    # num = self.to_s.split("").map(&:to_i)
-    # if num.length == 3
-    #   sentence.push(ones[num[0]])
-    #   sentence.push("hundred")
-    # end
-    # if num.length >= 1 or (num.length == 2 and num[0] == 1)
-    #   sentence.push(ones[num[0]])
-    # end
     sentence.join(" ")
   end
 end
