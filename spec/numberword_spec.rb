@@ -37,3 +37,9 @@ describe('Fixnum#numberword') do
     expect(999999999999999.numberword).to(eq("nine hundred ninety nine trillion nine hundred ninety nine billion nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine"))
   end
 end
+
+describe('String#wordnumber') do
+  it('returns a number with a valid string') do
+    expect("nine".wordnumber.class).to(eq(Fixnum))
+  end
+end

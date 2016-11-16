@@ -76,3 +76,41 @@ class Fixnum
     sentence.join(" ")
   end
 end
+
+class String
+  define_method(:wordnumber) do
+    ones = {
+      "one" => 1,
+      "two" => 2,
+      "three" => 3,
+      "four" => 4,
+      "five" => 5,
+      "six" => 6,
+      "seven" => 7,
+      "eight" => 8,
+      "nine" => 9,
+      "ten" => 10,
+      "eleven" => 11,
+      "twelve" => 12,
+      "thirteen" => 13,
+      "fourteen" => 14,
+      "fifteen" => 15,
+      "sixteen" => 16,
+      "seventeen" => 17,
+      "eighteen" => 18,
+      "nineteen" => 19
+    }
+    phrase = self
+    total = 0
+  end
+end
+
+# 
+# phrase = "one thousand twenty two"
+# if phrase.include?("thousand")
+# 	phrase.split(" thousand ")
+# end
+#
+# cutoffs = ["trillion", "billion", "million", "thousand"]
+
+#loop through them, split into string for each place
